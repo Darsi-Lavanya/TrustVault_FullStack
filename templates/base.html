@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}TrustVault{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="{{ url_for('index') }}">🔐 TrustVault</a>
+  <nav>
+    {% if current_user %}
+      <a href="{{ url_for('documents') }}">Documents</a>
+      {% if current_user['role'] in ['owner','admin'] %}<a href="{{ url_for('upload') }}">Upload</a>{% endif %}
+      {% if current_user['role'] == 'admin' %}<a href="{{ url_for('admin_dashboard') }}">Admin</a>{% endif %}
+      <span class="user-chip">{{ current_user['username'] }} · {{ current_user['role'] }}</span>
+      <form class="inline" method="post" action="{{ url_for('logout') }}"><button class="link-button">Log out</button></form>
+    {% else %}
+      <a href="{{ url_for('login') }}">Log in</a><a href="{{ url_for('register') }}">Register</a>
+    {% endif %}
+  </nav>
+</header>
+<main class="container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}<section class="flash-list">{% for category,message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}</section>{% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</main>
+<footer>TrustVault · Private document access with audit history</footer>
+</body></html>

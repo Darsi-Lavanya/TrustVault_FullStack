@@ -1,0 +1,15 @@
+{% extends "base.html" %}{% block title %}TrustVault · Secure sharing{% endblock %}
+{% block content %}
+<section class="hero">
+  <p class="eyebrow">SECURE DOCUMENT SHARING</p>
+  <h1>Your documents.<br><span>Your control.</span></h1>
+  <p class="lead">Share confidential files with named people, grant only the access they need, and keep a record of important activity.</p>
+  <div class="actions"><a class="btn" href="{{ url_for('login') }}">Sign in</a><a class="btn secondary" href="{{ url_for('register') }}">Create viewer account</a></div>
+</section>
+<div class="feature-grid">
+  <article class="panel"><h3>Least-privilege access</h3><p>Document-level read and edit permissions, with owner-controlled revocation.</p></article>
+  <article class="panel"><h3>Audit history</h3><p>Record uploads, downloads, edits, deletions and permission changes.</p></article>
+  <article class="panel"><h3>Private file storage</h3><p>Files are stored outside the public static folder and served only after authorization.</p></article>
+</div>
+<p class="muted small">Demo application: review the README before production use.</p>
+{% endblock %}

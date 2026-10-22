@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block title %}Register · TrustVault{% endblock %}
+{% block content %}<section class="form-card"><h1>Create an account</h1><p class="muted">New accounts start as viewers. An administrator can assign the document-owner role.</p>
+<form method="post"><label>Username<input name="username" minlength="3" maxlength="40" required autocomplete="username"></label><label>Password<input type="password" name="password" minlength="10" required autocomplete="new-password"><small>At least 10 characters.</small></label><button class="btn full">Create account</button></form></section>{% endblock %}

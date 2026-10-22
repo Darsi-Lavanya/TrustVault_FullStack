@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}Error {{ code }} · TrustVault{% endblock %}
+{% block content %}<section class="form-card"><p class="eyebrow">REQUEST NOT COMPLETED</p><h1>{{ code }}</h1><p>{{ message }}</p><a class="btn" href="{{ url_for('documents') if current_user else url_for('index') }}">Return</a></section>{% endblock %}
